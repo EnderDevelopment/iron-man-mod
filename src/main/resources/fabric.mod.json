@@ -1,0 +1,23 @@
+{
+    "schemaVersion": 1,
+    "id": "ironmanmod",
+    "version": "1.0.0",
+    "name": "Iron Man Mod",
+    "description": "A Minecraft mod featuring Iron Man armor and abilities.",
+    "authors": ["daozheng2026"],
+    "license": "MIT",
+    "environment": "*",
+    "entrypoints": {
+        "main": [
+            "com.daozheng2026.ironmanmod.IronManMod"
+        ]
+    },
+    "mixins": [
+        "ironmanmod.mixins.json"
+    ],
+    "depends": {
+        "fabricloader": ">=0.14.0",
+        "minecraft": "1.20.4",
+        "fabric-api": "*"
+    }
+}

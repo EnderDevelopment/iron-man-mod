@@ -1,0 +1,40 @@
+plugins {
+    id 'fabric-loom' version '1.2-SNAPSHOT'
+    id 'maven-publish'
+}
+
+repositories {
+    mavenCentral()
+    maven {
+        name = 'Fabric'
+        url = 'https://maven.fabricmc.net/'
+    }
+}
+
+extra {
+    apply plugin: 'fabric-loom'
+    loom.ideaSync {
+        runConfigs {
+            client {
+                mainClass = 'net.fabricmc.devlaunchinjector.Main'
+                programArgs = ['--assetIndex', '1.20', '--assetsDir', 'assets', '--accessToken', 'FabricMC', '--version', '1.20', '--gameDir', projectDir.absolutePath]
+            }
+        }
+    }
+}
+
+dependencies {
+    minecraft 'com.mojang:minecraft:1.20.4'
+    mappings 'net.fabricmc:yarn:1.20.4+build.1:v2'
+    modImplementation 'net.fabricmc:fabric-loader:0.14.21'
+    modImplementation 'net.fabricmc.fabric-api:fabric-api:0.82.0+1.20.4'
+}
+
+loom {
+    accessWidenerPath = file('src/main/resources/ironmanmod.accesswidener')
+    refreshVersions = true
+    refreshDeps {
+        refresh(dependencies.minecraft)
+        refresh(dependencies.mappings)
+    }
+}
